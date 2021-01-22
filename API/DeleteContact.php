@@ -31,16 +31,35 @@
 		}
 	}
 
-	// TODO: add function to validate this user created this contact
-	// can do by finding the foreign id of this contact and matching with given user id
 	function validateUser($contactId, $userId)
     {
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		if ($conn->connect_error) 
 		{
 			returnWithError( $conn->connect_error );
-		} 
-        return false;
+		}
+		else
+		{
+			// create an sql query that retrieves the foreign key of this contact
+			$sql = "SELECT userId FROM Contacts where id='" . $contactId . "'";
+			if ($result = $conn->query($sql) != TRUE)
+			{
+				returnWithError( $conn->error );
+			}
+			else
+			{
+				if ($result->num_rows > 0)
+				{
+					$row = $result->fetch_assoc();
+					$foreignKey = $row["userId"];
+					if ($foreignKey === $userId)
+					{
+						return TRUE;
+					}
+				}
+			}
+		}
+        return FALSE;
     }
 
     function getRequestInfo()
