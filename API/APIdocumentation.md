@@ -20,6 +20,7 @@ Please follow the instruction below when accessing the API endpoints
         4. phoneNumber
         5. userId
     Example JSON payload:
+        
         {
             "firstName": "John",
             "lastName: "Doe",
@@ -28,9 +29,10 @@ Please follow the instruction below when accessing the API endpoints
         }
     In response either a JSON object will be sent back, either containing a success or an error message describing what happened
     Example JSON response: 
-    {
-        "success": "Contact successfully added!"
-    }
+    
+        {
+            "success": "Contact successfully added!"
+        }
 
 ------------------------------------------------------------
 4. /UpdateContact
@@ -38,33 +40,37 @@ Please follow the instruction below when accessing the API endpoints
     being updated (REQUIRED) and the current user's id (REQUIRED). If certain fields are empty, then the endpoint will keep the previous value.
     Additionally, if the user isn't linked to this contact via Foreign Key and tries to update it, an error will occur and no update will be made.
     Exampled JSON payload:
-    {
-         "newFirstName": "John",
-         "newLastName: "Doe",
-         "newEmail": "johndoe@site.com",
-         "newPhoneNumber": "1234567890",
-         "id": 3,
-         "userId": 1
-    }
+    
+        {
+             "newFirstName": "John",
+             "newLastName: "Doe",
+             "newEmail": "johndoe@site.com",
+             "newPhoneNumber": "1234567890",
+             "id": 3,
+             "userId": 1
+        }
+    
     In response either a JSON object will be sent back, either containing a success or an error message describing what happened
     Example JSON response: 
-    {
-        "success": "Contact successfully updated!"
-    }
+        {
+            "success": "Contact successfully updated!"
+        }
 
 ------------------------------------------------------------
 5. /DeleteContact
     The DeleteContact endpoint requires a JSON object that contains the id of the contact that is being deleted (REQUIRED) as well as the current user's id (REQUIRED).
     Additionally, if the user isn't linked to this contact via Foreign Key and tries to delete it, an error will occur and no deletion will be made.
     Example JSON payload:
-    {
-        "id": 3,
-        "userId": 1
-    }
+        
+        {
+            "id": 3,
+            "userId": 1
+        }
     In response either a JSON object will be sent back, either containing a success or an error message describing what happened
     Example JSON response: 
-    {
-        "success": "Contact successfully deleted!"
-    }
+        
+        {
+            "success": "Contact successfully deleted!"
+        }
 
 
