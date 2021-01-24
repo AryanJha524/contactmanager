@@ -9,41 +9,48 @@ function doLogin()
 {
 	userId = 0;
 	firstName = "";
-	lastName = "";
+	lastName = ""; 
 
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
+	
+	var hash = md5( password );
 
 	document.getElementById("loginResult").innerHTML = "";
 
-//	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
+//	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
 	var url = urlBase + '/Login.' + extension;
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, false);
+	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.send(jsonPayload);
+		xhr.onreadystatechange = function()
 
-		var jsonObject = JSON.parse( xhr.responseText );
-
-		userId = jsonObject.id;
-
-		if( userId < 1 )
 		{
-			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-			return;
-		}
+			if(this.readyState == 4 && this.status == 200)
+			{
+				var jsonObject = JSON.parse( xhr.responseText );
 
-		firstName = jsonObject.firstName;
-		lastName = jsonObject.lastName;
+				userId = jsonObject.id;
+		
+				if( userId < 1 )
+				{
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+		
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+		
+				saveCookie();
+		
+				window.location.href = "color.html";
 
-		saveCookie();
-
-		window.location.href = "color.html";
+			}
+		};
 	}
 	catch(err)
 	{
