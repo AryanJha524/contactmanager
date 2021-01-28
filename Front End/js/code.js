@@ -1,4 +1,4 @@
-var urlBase = 'http://s21cop4331group5.tech/LAMPAPI';
+var urlBase = 'http://s21cop4331group5.tech/API';
 var extension = 'php';
 
 var userId = 0;
@@ -9,11 +9,11 @@ function doLogin()
 {
 	userId = 0;
 	firstName = "";
-	lastName = ""; 
+	lastName = "";
 
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
-	
+
 	var hash = md5( password );
 
 	document.getElementById("loginResult").innerHTML = "";
@@ -35,18 +35,18 @@ function doLogin()
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				userId = jsonObject.id;
-		
+
 				if( userId < 1 )
 				{
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
-		
+
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
-		
+
 				saveCookie();
-		
+
 				window.location.href = "color.html";
 
 			}
@@ -109,13 +109,13 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-function addColor()
+function createContact()
 {
-	var newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
+	var newContact = document.getElementById("contactText").value;
+	document.getElementById("contactAddResult").innerHTML = "";
 
-	var jsonPayload = '{"color" : "' + newColor + '", "userId" : ' + userId + '}';
-	var url = urlBase + '/AddColor.' + extension;
+	var jsonPayload = '{"color" : "' + newContact + '", "userId" : ' + userId + '}';
+	var url = urlBase + '/CreateContact.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -126,27 +126,28 @@ function addColor()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				document.getElementById("contactAddResult").innerHTML = "Contact successfully added!";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("cotactAddResult").innerHTML = err.message;
 	}
 
 }
 
-function searchColor()
+
+function searchContact()
 {
 	var srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
+	document.getElementById("contactSearchResult").innerHTML = "";
 
-	var colorList = "";
+	var contactList = "";
 
 	var jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
-	var url = urlBase + '/SearchColors.' + extension;
+	var url = urlBase + '/SearchContacts.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -157,26 +158,26 @@ function searchColor()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				for( var i=0; i<jsonObject.results.length; i++ )
 				{
-					colorList += jsonObject.results[i];
+					contactList += jsonObject.results[i];
 					if( i < jsonObject.results.length - 1 )
 					{
-						colorList += "<br />\r\n";
+						contactList += "<br />\r\n";
 					}
 				}
 
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
+				document.getElementsByTagName("p")[0].innerHTML = contactList;
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
+		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
 }
