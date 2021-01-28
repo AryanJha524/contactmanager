@@ -59,6 +59,69 @@ function doLogin()
 
 }
 
+function doRegister()
+{
+	userId = 0;
+	firstName = "";
+	lastName = "";
+
+	var login = document.getElementById("loginName").value;
+	var password = document.getElementById("loginPassword").value;
+
+	var hash = md5( password );
+
+	document.getElementById("registration").innerHTML = "";
+
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '", "firstName" : "' + firstName + '", "lastName" : "' + lastName + '"}';
+//	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var url = urlBase + '/Register.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+
+		{
+			if(this.readyState == 4 && this.status == 200)
+			{
+				var jsonObject = JSON.parse( xhr.responseText );
+
+				userId = jsonObject.id;
+
+				if( userId > 1 )
+				{
+					document.getElementById("registration").innerHTML = "Account already created";
+					return;
+				}
+
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+
+				saveCookie();
+
+				window.location.href = "login.html";
+
+			}
+		};
+	}
+	catch(err)
+	{
+		document.getElementById("registration").innerHTML = err.message;
+	}
+
+}
+
+
+function openRegister()
+{
+	var url = urlBase + '/Register.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+}
+
 function saveCookie()
 {
 	var minutes = 20;
