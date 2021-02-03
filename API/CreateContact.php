@@ -1,4 +1,12 @@
 <?php
+
+	// db information
+	$servername = "localhost";
+	$username = "root";
+	$password = "cop4331g5mysql";
+	$dbname1 = "Users";
+	$dbname2 = "Contacts";
+
 	$inData = getRequestInfo();
     
     // storing information about the contact received from front end to use later when inserting into the database

@@ -3,6 +3,12 @@
     $contactId = $inData["id"];
     $userId = $inData["userId"];
 
+
+    $servername = "localhost";
+	$username = "root";
+	$password = "cop4331g5mysql";
+	$dbname = "Contacts";
+
     // connecting to the database
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error)
