@@ -1,7 +1,7 @@
 <?php
 
 	// db information
-	$servername = "localhost";
+	$servername = "104.131.122.53";
 	$username = "root";
 	$password = "cop4331g5mysql";
 	$dbname1 = "Users";
@@ -60,11 +60,10 @@
 		{
 			returnWithError( $conn->error );
 		}
+		returnWithSuccess("Contact successfully added!");
 		$conn->close();
 	}
-	
-	returnWithSuccess("Contact successfully added!");
-	
+		
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);

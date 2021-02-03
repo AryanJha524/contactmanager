@@ -4,7 +4,7 @@
     $userId = $inData["userId"];
 
 
-    $servername = "localhost";
+    $servername = "104.131.122.53";
 	$username = "root";
 	$password = "cop4331g5mysql";
 	$dbname = "Contacts";
@@ -46,8 +46,8 @@
                 {
                     returnWithError($conn->error);
                 }
-                $conn->close();
                 returnWithSuccess("Contact successfully updated!");
+                $conn->close();
             }
             else
             {
