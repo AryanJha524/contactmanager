@@ -4,8 +4,7 @@
 	$servername = "104.131.122.53";
 	$username = "root";
 	$password = "cop4331g5mysql";
-	$dbname1 = "Users";
-	$dbname2 = "Contacts";
+	$dbname = "COP4331";
 
 	$inData = getRequestInfo();
     
@@ -23,17 +22,17 @@
 	}
 
 	// check if this id exists in our user database to ensure this contact is linked with an existing user
-	$userconn = new mysqli($servername, $username, $password, $dbname1);
+	$conn = new mysqli($servername, $username, $password, $dbname);
 	
-	if ($userconn->connect_error)
+	if ($conn->connect_error)
 	{
-		returnWithError($userconn->connect_error);
+		returnWithError($conn->connect_error);
 	}
 	else
 	{
 		// creating SQL query to find a user with this ID
 		$sql = "SELECT userId FROM Users WHERE userId = ?";
-		$stmt = $userconn->prepare($sql);
+		$stmt = $conn->prepare($sql);
 		$stmt->bind_param("i", $userId);
 		$stmt->execute();
 
@@ -42,18 +41,8 @@
 		{
 			returnWithError("Cannot find a user with this ID");
 		}
-	}
 
-
-	$conn = new mysqli($servername, $username, $password, $dbname2);
-	if ($conn->connect_error) 
-	{
-		returnWithError( $conn->connect_error );
-	} 
-	else
-	{
 		$dateCreated = date('Y-m-d H:i:s');
-
 		// the userID will be inserted as a foreign key for this contact
 		$sql = "INSERT INTO Contacts (firstName, lastName, email, phoneNumber, dateCreated, userId) VALUES ($firstName, $lastName, $email, $phoneNumber, $dateCreated, $userId)";
 		if( $result = $conn->query($sql) != TRUE )

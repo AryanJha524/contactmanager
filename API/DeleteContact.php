@@ -6,7 +6,7 @@
 	$servername = "104.131.122.53";
 	$username = "root";
 	$password = "cop4331g5mysql";
-	$dbname = "Contacts";
+	$dbname = "COP4331";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 	if ($conn->connect_error) 
@@ -57,13 +57,16 @@
 				{
 					$row = $result->fetch_assoc();
 					$foreignKey = $row["userId"];
+					// check if the foreignKey stored for this contact matches the current user's id
 					if ($foreignKey === $userId)
 					{
+						$conn->close();
 						return TRUE;
 					}
 				}
 			}
 		}
+		$conn->close();
         return FALSE;
     }
 

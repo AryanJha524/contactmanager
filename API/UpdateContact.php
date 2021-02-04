@@ -7,7 +7,7 @@
     $servername = "104.131.122.53";
 	$username = "root";
 	$password = "cop4331g5mysql";
-	$dbname = "Contacts";
+	$dbname = "COP4331";
 
     // connecting to the database
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -52,6 +52,7 @@
             else
             {
                 returnWithError("Could not find a contact to update with provided id");
+                $conn->close();
             }
         }
 
@@ -80,11 +81,13 @@
 					$foreignKey = $row["userId"];
 					if ($foreignKey === $userId)
 					{
+                        $conn->close();
 						return TRUE;
 					}
 				}
 			}
-		}
+        }
+        $conn->close();
         return FALSE;
     }
 
