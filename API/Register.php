@@ -1,5 +1,11 @@
 <?php
 
+	$servername = "104.131.122.53";
+	$username = "root";
+	$password = "cop4331g5mysql";
+	$dbname1 = "Users";
+	$dbname2 = "Contacts";
+
 	$inData = getRequestInfo();
 
 	$id = 0;
@@ -8,7 +14,7 @@
   $login = "";
   $password = "";
 
-	$conn = new mysqli($servername, $username, $password, $dbname2);
+	$conn = new mysqli($servername, $username, $password, $dbname1);
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
