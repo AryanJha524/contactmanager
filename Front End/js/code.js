@@ -120,14 +120,17 @@ function openRegister()
 	window.location.href = "http://s21cop4331group5.tech/register.html";
 }
 
-function addColor()
+function createContact()
 {
-	var newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var phone = document.getElementById("phoneNumber").value;
+	var email = document.getElementById("email").value;
+	document.getElementById("contactAddResult").innerHTML = "";
 
-	var jsonPayload = '{"color" : "' + newColor + '", "userId" : ' + userId + '}';
-	var url = urlBase + '/AddColor.' + extension;
-
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : ' + lastName +'", "email" : ' + email + '", "phoneNumber" : ' + phone + '}';
+	var url = urlBase + '/CreateContact.' + extension;
+	console.log(jsonPayload);
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -137,14 +140,14 @@ function addColor()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 
 }
@@ -200,34 +203,6 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-function createContact()
-{
-	var newContact = document.getElementById("contactText").value;
-	document.getElementById("contactAddResult").innerHTML = "";
-
-	var jsonPayload = '{"color" : "' + newContact + '", "userId" : ' + userId + '}';
-	var url = urlBase + '/CreateContact.' + extension;
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				document.getElementById("contactAddResult").innerHTML = "Contact successfully added!";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("cotactAddResult").innerHTML = err.message;
-	}
-
-}
 
 
 function searchContact()
