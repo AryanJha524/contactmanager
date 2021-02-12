@@ -47,7 +47,7 @@ function doLogin()
 
 				saveCookie();
 
-				window.location.href = "color.html";
+				window.location.href = "http://s21cop4331group5.tech/main.html";
 
 			}
 		};
@@ -116,8 +116,12 @@ function doRegister()
 
 function openRegister()
 {
-
 	window.location.href = "http://s21cop4331group5.tech/register.html";
+}
+
+function openCreateContacts()
+{
+	window.location.href = "http://s21cop4331group5.tech/addContact.html";
 }
 
 function createContact()
@@ -140,7 +144,7 @@ function createContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				document.getElementById("contactAddResult").innerHTML = "Contact has been added!";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -148,6 +152,74 @@ function createContact()
 	catch(err)
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
+	}
+
+}
+
+function updateContact()
+{
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var phone = document.getElementById("phoneNumber").value;
+	var email = document.getElementById("email").value;
+	document.getElementById("contactAddResult").innerHTML = "";
+
+	var jsonPayload = '{"newFirstName" : "' + firstName + '", "newLastName" : ' + lastName +'", "newEmail" : ' + email + '", "newPhoneNumber" : ' + phone + '}';
+	var url = urlBase + '/UpdateContact.' + extension;
+	console.log(jsonPayload);
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("contactAddResult").innerHTML = "Contact has been updated!";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactAddResult").innerHTML = err.message;
+	}
+
+}
+
+
+
+// Something to get that contact
+// Put a button next to contact
+function deleteContact()
+{
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var phone = document.getElementById("phoneNumber").value;
+	var email = document.getElementById("email").value;
+	document.getElementById("contactAddResult").innerHTML = "";
+
+	var jsonPayload = '{"newFirstName" : "' + firstName + '", "newLastName" : ' + lastName +'", "newEmail" : ' + email + '", "newPhoneNumber" : ' + phone + '}';
+	var url = urlBase + '/UpdateContact.' + extension;
+	console.log(jsonPayload);
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("contactDeleteResult").innerHTML = "Contact has been Deleted!";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactDeleteResult").innerHTML = err.message;
 	}
 
 }
@@ -212,7 +284,7 @@ function searchContact()
 
 	var contactList = "";
 
-	var jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
+	var jsonPayload = '{"firstName" : "' + srch + '}';
 	var url = urlBase + '/SearchContacts.' + extension;
 
 	var xhr = new XMLHttpRequest();
