@@ -1,8 +1,8 @@
 <?php
 
-	$servername = "104.131.122.53";
-	$username = "root";
-	$password = "cop4331g5mysql";
+	$servername = "localhost";
+	$username = "Aryan";
+	$password = "testing321";
 	$dbname1 = "Users";
 	$dbname2 = "Contacts";
 
