@@ -16,50 +16,44 @@
 	} 
     else
     {
-        // have to fix this function
-        if (/*validateUser($contactId, $userId)*/ false == true)
+		if (!validateUser($contactId, $userId))
 		{
-			returnWithError("User not authorized to update contact");
-        }
-        else
-        {
-            // find the contact to update and extract its fields
-            $sql = "SELECT ID,firstName,lastName, email, phoneNumber FROM COP4331.Contacts where ID=$contactId";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0)
-            {
-                $row = $result->fetch_assoc();
-                $oldFirstName = $row["firstName"];
-                echo($oldFirstName);
-                $oldLastName = $row["lastName"];
-                echo($oldLastName);
-                $oldEmail = $row["email"];
-                echo($oldEmail);
-                $oldPhoneNumber = $row["phoneNumber"];
-                echo($oldPhoneNumber);
+			returnWithError("User not authorized to delete contact");
+		}
+		else 
+		{
+			// find the contact to update and extract its fields
+			$sql = "SELECT ID,firstName,lastName, email, phoneNumber FROM COP4331.Contacts where ID=".$contactId;
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0)
+			{
+				$row = $result->fetch_assoc();
+				$oldFirstName = $row["firstName"];
+				$oldLastName = $row["lastName"];
+				$oldEmail = $row["email"];
+				$oldPhoneNumber = $row["phoneNumber"];
 
-                // set updated values that we will insert to either the new value or the old one (if no new info was provided on the update form)
-                $updatedFirstName = ($inData["newFirstName"]) ? $inData["newFirstName"] : $oldFirstName;
-                $updatedLastName = ($inData["newLastName"]) ? $inData["newLastName"] : $oldLastName;
-                $updatedEmail = ($inData["newEmail"]) ? $inData["newEmail"] : $oldEmail;
-                $updatedPhoneNumber = ($inData["newPhoneNumber"]) ? $inData["newPhoneNumber"] : $oldPhoneNumber;
+				// set updated values that we will insert to either the new value or the old one (if no new info was provided on the update form)
+				$updatedFirstName = ($inData["newFirstName"]) ? $inData["newFirstName"] : $oldFirstName;
+				$updatedLastName = ($inData["newLastName"]) ? $inData["newLastName"] : $oldLastName;
+				$updatedEmail = ($inData["newEmail"]) ? $inData["newEmail"] : $oldEmail;
+				$updatedPhoneNumber = ($inData["newPhoneNumber"]) ? $inData["newPhoneNumber"] : $oldPhoneNumber;
 
-                // perform an SQL to update the desired contact
-                $sql = "UPDATE COP4331.Contacts SET firstName='".$updatedFirstName."',lastName='".$updatedLastName."',email='".$updatedEmail."',phoneNumber='".$updatedPhoneNumber."' WHERE ID=$contactId";
-                if ($result = $conn->query($sql) != TRUE)
-                {
-                    returnWithError("Couldn't update contact");
-                }
-                returnWithSuccess("Contact successfully updated!");
-                $conn->close();
-            }
-            else
-            {
-                returnWithError("Could not find a contact to update with provided id");
-                $conn->close();
-            }
-        }
-
+				// perform an SQL to update the desired contact
+				$sql = "UPDATE COP4331.Contacts SET firstName='".$updatedFirstName."',lastName='".$updatedLastName."',email='".$updatedEmail."',phoneNumber='".$updatedPhoneNumber."' WHERE ID=$contactId";
+				if ($result = $conn->query($sql) != TRUE)
+				{
+					returnWithError("Couldn't update contact");
+				}
+				returnWithSuccess("Contact successfully updated!");
+				$conn->close();
+			}
+			else
+			{
+				returnWithError("Could not find a contact to update with provided id");
+				$conn->close();
+			}
+		}
     }
 
     function validateUser($contactId, $userId)
@@ -72,26 +66,24 @@
 		else
 		{
 			// create an sql query that retrieves the foreign key of this contact
-			$sql = "SELECT UserId FROM COP4331.Contacts where ID=$contactId";
-			if ($result = $conn->query($sql) != TRUE)
+			$sql = "SELECT UserID FROM COP4331.Contacts where ID=". $contactId;
+			$result = $conn->query($sql);
+			if ($result === FALSE)
 			{
-				returnWithError( "Couldn't find user to validate" );
+				$conn->close();
+				return FALSE;
 			}
 			else
 			{
 				if ($result->num_rows > 0)
 				{
 					$row = $result->fetch_assoc();
-					$foreignKey = $row["userId"];
+					$foreignKey = $row["UserID"];
 					// check if the foreignKey stored for this contact matches the current user's id
-					if ($foreignKey === $userId)
+					if ($foreignKey == $userId)
 					{
 						$conn->close();
 						return TRUE;
-					}
-					else
-					{
-						return FALSE;
 					}
 				}
 			}

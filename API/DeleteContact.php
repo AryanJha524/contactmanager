@@ -17,18 +17,13 @@
 	else
 	{
 		// have to fix this function right now
-		/*if (validateUser($contactId, $userId))
+		if (!validateUser($contactId, $userId))
 		{
 			returnWithError("User not authorized to delete contact");
 		}
 		else
-		{*/
+		{
 			$sql = "DELETE FROM COP4331.Contacts WHERE id=$contactId";
-			/*$stmt = $conn->prepare($sql);
-			$stmt->bind_param("i", $contactId);
-			$stmt->execute();
-			$result = $stmt->get_result(); */
-			
 			if( $result = $conn->query($sql) != TRUE )
 			{
 				returnWithError( "Couldn't successfully delete contact" );
@@ -38,7 +33,7 @@
 				returnWithSuccess("Contact successfully deleted!");
 			}
 			$conn->close();
-		// }
+		}
 	}
 
 	function validateUser($contactId, $userId)
@@ -51,26 +46,24 @@
 		else
 		{
 			// create an sql query that retrieves the foreign key of this contact
-			$sql = "SELECT UserId FROM COP4331.Contacts where ID=".$contactId;
-			if ($result = $conn->query($sql) != TRUE)
+			$sql = "SELECT UserID FROM COP4331.Contacts where ID=". $contactId;
+			$result = $conn->query($sql);
+			if ($result === FALSE)
 			{
-				returnWithError( "Couldn't find user to validate" );
+				$conn->close();
+				return FALSE;
 			}
 			else
 			{
 				if ($result->num_rows > 0)
 				{
 					$row = $result->fetch_assoc();
-					$foreignKey = $row["userId"];
+					$foreignKey = $row["UserID"];
 					// check if the foreignKey stored for this contact matches the current user's id
-					if ($foreignKey === $userId)
+					if ($foreignKey == $userId)
 					{
 						$conn->close();
 						return TRUE;
-					}
-					else
-					{
-						return FALSE;
 					}
 				}
 			}
