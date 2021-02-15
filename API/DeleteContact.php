@@ -16,7 +16,6 @@
 	} 
 	else
 	{
-		// have to fix this function right now
 		if (!validateUser($contactId, $userId))
 		{
 			returnWithError("User not authorized to delete contact");

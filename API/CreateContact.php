@@ -28,8 +28,6 @@
 	}
 	else
 	{
-			// the userID will be inserted as a foreign key for this contact
-			// FIX SQL QUERY
 			$sql = "INSERT INTO COP4331.Contacts (UserID, firstName, lastName, email, phoneNumber) VALUES (" . $userId . ",'" . $firstName . "','" . $lastName . "','" . $email . "','" . $phoneNumber . "')";
 			$result = $conn->query($sql);			
 			if($result === TRUE)
