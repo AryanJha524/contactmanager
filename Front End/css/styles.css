@@ -28,6 +28,8 @@ body
    
 }
 
+
+
 #loggedInDiv
 {
     font-size: 30px;
@@ -73,6 +75,11 @@ body
 {
 	font-size: 15px;
 }
+
+#firstName
+{
+	font-size: 25px;
+} 
 #loginPassword
 {
 	font-size: 15px;
