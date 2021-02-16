@@ -46,7 +46,19 @@ body
     margin-left: 15%;
     padding: 25px;
     background-color: #e6e3e3c4;
+} 
+
+#inner 
+{
+    display: inline-block;
+    font-size: 27px; 
+    text-align: center;
+    margin-left: 39%;
+    margin-bottom: 2%;
+    font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
+    color: #17251d;
 }
+
 
 #accessUIDiv
 {

@@ -27,6 +27,7 @@ body
     color: #707070;
 } 
 
+
 #accessUIDiv
 {
     font-size: 30px;
@@ -36,7 +37,7 @@ body
     border-radius: 50px;
     background-color: #8a888a; 
     opacity: 0.8;
-    
+    ;
 }
 
 .mainButtons
@@ -47,6 +48,23 @@ body
     margin-left: 20%;
     font-family: 'Century Gothic', sans-serif;
 } 
+.mybutton 
+{
+    font-size: 20px;
+    border-radius: 50px;
+    width: 20%;
+    margin-left: 40%;
+    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
+} 
+
+.addContactButton 
+{
+    font-size: 20px;
+    border-radius: 50px;
+    width: 15%;
+    margin-left: 43%;
+    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
+}
 
 .mainbuttons:hover{
     background-color: #aea2ee4f;
@@ -79,7 +97,14 @@ body
 {
 	font-size: 15px;
 }
-
+#searchText
+{
+	font-size: 30px;
+}
+#colorText
+{
+	font-size: 30px;
+}
 
 input[type="text"],input[type="password"]{
     border-radius: 25px;
