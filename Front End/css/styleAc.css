@@ -1,0 +1,173 @@
+.background 
+{
+    background-image: url("/images/Address_book_1.jpg"); 
+    position: absolute; 
+
+    height: 100%;
+    width: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden; 
+    overflow-y: hidden;
+}
+ 
+
+.blur 
+{
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(5px); 
+    height: 100%;
+    width: 100%;
+}
+
+
+#title
+{
+    font-size: 80px;
+    width: 100%;
+    margin: 0% 0%;
+    margin-top: 0%; 
+    margin-left: 4%;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    color: #707070; 
+    overflow-y: hidden;
+} 
+
+#loginDiv
+{
+    font-size: 30px;
+    width: 50%;
+    margin-left: 27%; 
+    margin-top: 3%;
+    padding: 25px; 
+    border-radius: 50px;
+    background-color: #8a888a; 
+    opacity: 0.8;
+}
+
+#loggedInDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #e6e3e3c4;
+}
+
+
+
+
+.addContactButton 
+{
+    font-size: 20px;
+    border-radius: 50px;
+    width: 15%;
+    margin-left: 43%;
+    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
+}
+
+
+
+#firstName
+{
+	font-size: 25px;
+}  
+
+#lastName 
+{
+    font-size: 25px;
+} 
+
+#email 
+{
+    font-size: 25px;
+} 
+
+#phoneNumber 
+{
+    font-size: 25px;
+}
+
+
+
+input[type="text"],input[type="password"]{
+    border-radius: 25px;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#inner-title{
+    display: inline-block;
+    font-size: 35px;
+    width: 90%;
+    text-align: center;
+    margin-left: 7%;
+    margin-bottom: 2%;
+    font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
+    color: #dabdee;
+}
+
+#loginResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+} 
+
+#searchResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+
+}
+
+#userName{
+    display: inline-block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#logoutButton{
+    width: 20%;
+    margin-left: 40%;
+}
+
+select{
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 2%;
+    font-size: 0.75em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#colorSearchResult{
+    display: none;
+}
+
+#colorAddResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
