@@ -1,13 +1,19 @@
 body
 {
-  background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-  background-color: #131313;
-  background-size: 20px 20px;
+
+  background-image: url('/images/c5d9e05f7c1055e32d67a34363cca041.jpg'); 
+  position: absolute;
+ 
+
+  /* Full height */
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 #title
 {
@@ -22,10 +28,12 @@ body
 #loginDiv
 {
     font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-   
+    width: 50%;
+    margin-left: 25%;
+    padding: 25px; 
+    border-radius: 50px;
+    background-color: #8a888a; 
+    opacity: 0.8;
 }
 
 
@@ -36,7 +44,7 @@ body
     width: 70%;
     margin-left: 15%;
     padding: 25px;
-    background-color: #b2b2b2;
+    background-color: #e6e3e3c4;
 }
 
 #accessUIDiv
@@ -110,7 +118,7 @@ input[type="text"],input[type="password"]{
     margin-left: 5%;
     margin-bottom: 2%;
     font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
-    color: #9a87a8;
+    color: #dabdee;
 }
 
 #loginResult{
