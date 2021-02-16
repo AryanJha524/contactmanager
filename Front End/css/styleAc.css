@@ -64,11 +64,17 @@
 {
     font-size: 20px;
     border-radius: 50px;
-    width: 15%;
-    margin-left: 43%;
-    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
+    width: 20%;
+    margin-left: 41%;
+    font-family: 'Century Gothic', sans-serif;
 }
 
+.addContactButton:hover
+{
+    background-color: #aea2ee4f;
+    color: #FFFFFF;
+    opacity: 50%;
+}
 
 
 #firstName
