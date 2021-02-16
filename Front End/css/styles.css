@@ -12,7 +12,9 @@ body
   background-repeat: no-repeat;
   background-size: cover;
 
-}
+} 
+
+
 #title
 {
     font-size: 70px;
@@ -46,19 +48,22 @@ body
 #accessUIDiv
 {
     font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
+    width: 40%;
+    margin-left: 27%;
+    padding: 25px; 
+    border-radius: 50px;
+    background-color: #8a888a; 
+    opacity: 0.8;
     ;
 }
 
-.buttons
+.mainButtons
 {
     font-size: 25px;
-    border-radius: px;
-    width: 40%;
-    margin-left: 25%;
-    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
+    border-radius: 15px;
+    width: 60%;
+    margin-left: 20%;
+    font-family: 'Century Gothic', sans-serif;
 } 
 .mybutton 
 {
@@ -78,7 +83,7 @@ body
     font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
 }
 
-.buttons:hover{
+.mainbuttons:hover{
     background-color: #aea2ee4f;
     color: #FFFFFF;
     opacity: 50%;
@@ -139,7 +144,7 @@ input[type="text"],input[type="password"]{
     margin-left: 7%;
     margin-bottom: 2%;
     font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
-    color: #dabdee;
+    color: #7a5394;
 }
 
 #loginResult{
