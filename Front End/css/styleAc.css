@@ -17,7 +17,7 @@
 .blur 
 {
     background: rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(5px); 
+    backdrop-filter: blur(3px); 
     height: 100%;
     width: 100%;
 }
