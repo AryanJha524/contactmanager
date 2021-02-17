@@ -17,7 +17,6 @@
 	else
 	{
 		$sql = "SELECT * FROM COP4331.Contacts WHERE (firstName LIKE '%" . $inData["search"] . "%' OR lastName like '%" . $inData["search"] . "%' OR phoneNumber like '%" . $inData["search"] . "%' OR email like '%" . $inData["search"] . "%') AND UserID=" . $inData["userId"];
-		echo($sql);
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
