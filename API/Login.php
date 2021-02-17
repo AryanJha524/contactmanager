@@ -3,8 +3,7 @@
 	$servername = "localhost";
 	$username = "Aryan";
 	$password = "testing321";
-	$dbname1 = "Users";
-	$dbname2 = "Contacts";
+	$dbname = "COP4331";
 
 	$inData = getRequestInfo();
 
@@ -12,7 +11,7 @@
 	$firstName = "";
 	$lastName = "";
 
-  $conn = new mysqli($servername, $username, $password, $dbname1);
+  $conn = new mysqli($servername, $username, $password, $dbname);
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );

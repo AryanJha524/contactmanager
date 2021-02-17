@@ -3,25 +3,24 @@
 	$servername = "localhost";
 	$username = "Aryan";
 	$password = "testing321";
-	$dbname1 = "Users";
-	$dbname2 = "Contacts";
+	$dbname = "COP4331";
 
 	$inData = getRequestInfo();
 
 	$id = 0;
-	$firstName = "";
-	$lastName = "";
-  $login = "";
-  $password = "";
+	$firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
+  $login = $inData["login"];
+  $password = $inData["password"];
 
-	$conn = new mysqli($servername, $username, $password, $dbname1);
+	$conn = new mysqli($servername, $username, $password, $dbname);
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
 	}
 	else
 	{
-		$sql = "insert into Users (firstName,lastName,login, password) VALUES ('" . $inData["firstName"] . "','" . $inData["lastName"] . "','" . $inData["login"] . "','" . $inData["password"] ."')";
+		$sql = "insert into Users (firstName,lastName,login, password) VALUES ('" . $firstName . "','" . $lastName . "','" . $login . "','" . $password ."')";
 		$result = $conn->query($sql);
 
 		sendResultInfoAsJson( "Profile Created" );
