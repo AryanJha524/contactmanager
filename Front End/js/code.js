@@ -14,12 +14,12 @@ function doLogin()
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
 
-	var hash = md5( password );
+	// var hash = md5( password );
 
 	document.getElementById("loginResult").innerHTML = "";
 
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
-//	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
 	var url = urlBase + '/Login.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -62,18 +62,17 @@ function doLogin()
 function doRegister()
 {
 	userId = 0;
-	firstName = "";
-	lastName = "";
-
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
 
-	var hash = md5( password );
+	// var hash = md5( password );
 
 	document.getElementById("registration").innerHTML = "";
 
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '", "firstName" : "' + firstName + '", "lastName" : "' + lastName + '"}';
-//	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '", "firstName" : "' + firstName + '", "lastName" : "' + lastName + '"}';
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : ' + lastName +'",login" : "' + login + '", "password" : "' + password + '"}';
 	var url = urlBase + '/Register.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -81,6 +80,7 @@ function doRegister()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
+		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function()
 
 		{
@@ -90,7 +90,7 @@ function doRegister()
 
 				userId = jsonObject.id;
 
-				if( userId > 1 )
+				if( userId > 0 )
 				{
 					document.getElementById("registration").innerHTML = "Account already created";
 					return;
@@ -100,8 +100,8 @@ function doRegister()
 				lastName = jsonObject.lastName;
 
 				saveCookie();
-
-				window.location.href = "login.html";
+				document.getElementById("registration").innerHTML = "Account created.";
+				window.location.href = "http://s21cop4331group5.tech/";
 
 			}
 		};
