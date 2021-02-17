@@ -3,22 +3,21 @@
 	$servername = "localhost";
 	$username = "Aryan";
 	$password = "testing321";
-	$dbname1 = "Users";
-	$dbname2 = "Contacts";
+	$dbname = "COP4331";
 
 	$inData = getRequestInfo();
-
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli($servername, $username, $password, $dbname2);
+	$conn = new mysqli($servername, $username, $password, $dbname);
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
 	}
 	else
 	{
-		$sql = "select firstName, lastName, phoneNumber, email from Contacts where firstName like '%" . $inData["search"] . "%' and where lastName like '%" . $inData["search"] . "%' and where phoneNumber like '%" . $inData["search"] . "%' and where email like '%" . $inData["search"] . "%' and UserID=" . $inData["userId"];
+		$sql = "SELECT * FROM COP4331.Contacts WHERE firstName LIKE '%" . $inData["search"] . "%' OR lastName like '%" . $inData["search"] . "%' OR phoneNumber like '%" . $inData["search"] . "%' OR email like '%" . $inData["search"] . "%' AND UserID=" . $inData["userId"];
+		echo($sql);
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -26,10 +25,10 @@
 			{
 				if( $searchCount > 0 )
 				{
-					$searchResults .= ",";
+					$searchResults .= ",\n";
 				}
 				$searchCount++;
-				$searchResults .= '"' . $row["firstName"] . $row["lastName"] . $row["phoneNumber"] . $row["email"] '"';
+				$searchResults .= '"' . $row["ID"] . '""' . $row["firstName"] . '""' . $row["lastName"] . '""' . $row["phoneNumber"] . '""' . $row["email"] . '""' . $row["userID"];
 			}
 		}
 		else
@@ -54,13 +53,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"results":[''],error":"' . $err . '"}';
+		$retValue = '{error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = '{"results":[' . $searchResults . ']}';
 		sendResultInfoAsJson( $retValue );
 	}
 
