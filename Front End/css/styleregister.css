@@ -29,9 +29,11 @@
     font-size: 70px;
     width: 100%;
     margin: 2% 5%;
-    text-align: center;
+    text-align: center; 
+    margin-left: 33%;
     font-family: 'Verdana', 'Geneva', sans-serif;
     color: #707070;
+    font-weight:500;
 } 
 
 #loginDiv
@@ -60,7 +62,8 @@
     border-radius: 15px;
     width: 50%;
     margin-left: 25%;
-    font-family: 'Century Gothic', sans-serif;
+    font-family: 'Century Gothic', sans-serif; 
+  
 } 
 
 .registerbuttons:hover{

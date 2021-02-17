@@ -1,4 +1,4 @@
-body
+.background
 {
 
   background-image: url('/images/c5d9e05f7c1055e32d67a34363cca041.jpg'); 
@@ -16,12 +16,20 @@ body
 
 } 
 
+.blur 
+{
+   
+    backdrop-filter: blur(2px); 
+    height: 100%;
+    width: 100%;
+}
 
 #title
 {
     font-size: 70px;
     width: 100%;
-    margin: 2% 5%;
+    margin: 2% 5%; 
+    margin-left: 29%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
     color: #707070;
