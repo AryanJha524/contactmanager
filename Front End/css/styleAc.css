@@ -63,7 +63,8 @@
     border-radius: 50px;
     width: 20%;
     margin-left: 41%;
-    font-family: 'Century Gothic', sans-serif;
+    font-family: 'Century Gothic', sans-serif; 
+    outline: none;
 }
 
 .addContactButton:hover

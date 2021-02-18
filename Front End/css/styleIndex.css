@@ -78,7 +78,8 @@ body
     border-radius: 15px;
     width: 40%;
     margin-left: 30%;
-    font-family: 'Century Gothic', sans-serif;
+    font-family: 'Century Gothic', sans-serif; 
+    outline: none;
 } 
 
 .indexButtons:hover{
@@ -105,7 +106,8 @@ input[type="text"],input[type="password"]{
     width: 65%;
     margin-left: 15%;
     margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif; 
+    outline: none;
 }
 
 #inner-title{

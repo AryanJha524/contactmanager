@@ -63,6 +63,7 @@
     width: 50%;
     margin-left: 25%;
     font-family: 'Century Gothic', sans-serif; 
+    outline: none;
   
 } 
 
@@ -79,17 +80,20 @@
 
 #firstName
 {
-	font-size: 25px;
+	font-size: 25px; 
+    outline: none; 
 }  
 
 #lastName 
 {
     font-size: 25px;
+    outline: none; 
 } 
 
 #loginPassword
 {
 	font-size: 25px;
+    outline: none;
 }
 
 input[type="text"],input[type="password"]{

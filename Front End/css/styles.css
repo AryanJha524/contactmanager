@@ -62,7 +62,8 @@
     border-radius: 50px;
     width: 20%;
     margin-left: 40%;
-    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif; 
+    outline: none; 
 } 
 
 .addContactButton 
