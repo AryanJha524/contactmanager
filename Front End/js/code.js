@@ -186,10 +186,8 @@ function updateContact()
 // Put a button next to contact
 function deleteContact()
 {
-	var firstName = document.getElementById("firstName").value;
-	var lastName = document.getElementById("lastName").value;
-	var phone = document.getElementById("phoneNumber").value;
-	var email = document.getElementById("email").value;
+	var id = 0;
+	var userID = getUserID();
 	document.getElementById("contactAddResult").innerHTML = " ";
 
 	var jsonPayload = '{"id" : ' + id + ', "userID" : ' + userID + '}';
@@ -314,7 +312,7 @@ function searchContact()
 	var url = urlBase + '/SearchContacts.' + extension;
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
