@@ -29,7 +29,8 @@
     font-size: 70px;
     width: 100%;
     margin: 2% 5%;
-    text-align: center;
+    text-align: center; 
+    margin-left: 37%;
     font-family: 'Ubuntu', sans-serif;
     color: #707070;
 } 
