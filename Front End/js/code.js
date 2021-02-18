@@ -67,7 +67,7 @@ function doRegister()
 	document.getElementById("registration").innerHTML = " ";
 
 	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '", "firstName" : "' + firstName + '", "lastName" : "' + lastName + '"}';
-	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : ' + lastName +'",login" : "' + login + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName +'", "login" : "' + login + '", "password" : "' + password + '"}';
 	var url = urlBase + '/Register.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -75,23 +75,25 @@ function doRegister()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
+		console.log("Result is: " + checkExistance(jsonPayload));
+		if(checkExistance(jsonPayload))
+		{
+			document.getElementById("registration").innerHTML = "Account already created";
+			return;
+		}
 		xhr.send(jsonPayload);
+		console.log(jsonPayload);
 		console.log(xhr.responseText);
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				userId = jsonObject.id;
 
-				if( userId > 0 )
-				{
-					document.getElementById("registration").innerHTML = "Account already created";
-					return;
-				}
 
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
 				saveCookie();
-				document.getElementById("registration").innerHTML = "Account created.";
+				document.getElementById("registration").innerHTML = "\nAccount created.";
 				window.location.href = "http://s21cop4331group5.tech/";
 
 	}
@@ -102,6 +104,33 @@ function doRegister()
 
 }
 
+function checkExistance(json)
+{
+	var url = urlBase + '/Login.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(json);
+		console.log(xhr.responseText);
+		var jsonObject = JSON.parse( xhr.responseText );
+
+		userId = jsonObject.id;
+
+		if( userId > 0 )
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+	catch(err)
+	{
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
+}
 
 function openRegister()
 {
