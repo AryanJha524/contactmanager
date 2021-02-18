@@ -23,11 +23,12 @@ function doLogin()
 	var url = urlBase + '/Login.' + extension;
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
 		xhr.send(jsonPayload);
+		console.log(xhr.responseText);
 		var jsonObject = JSON.parse( xhr.responseText );
 
 		userId = jsonObject.id;
@@ -70,16 +71,12 @@ function doRegister()
 	var url = urlBase + '/Register.' + extension;
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
 		xhr.send(jsonPayload);
-		xhr.onreadystatechange = function()
-
-		{
-			if(this.readyState == 4 && this.status == 200)
-			{
+		console.log(xhr.responseText);
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				userId = jsonObject.id;
@@ -97,8 +94,6 @@ function doRegister()
 				document.getElementById("registration").innerHTML = "Account created.";
 				window.location.href = "http://s21cop4331group5.tech/";
 
-			}
-		};
 	}
 	catch(err)
 	{
@@ -278,6 +273,23 @@ function getUserID()
 		}
 	}
 	return userID;
+}
+
+function getFirstName()
+{
+	var data = document.cookie;
+	var splits = data.split(",");
+	var firstName = "";
+	for(var i = 0; i < splits.length; i++)
+	{
+		var thisOne = splits[i].trim();
+		var tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = parseInt( tokens[1].trim() );
+		}
+	}
+	return firstName;
 }
 
 function doLogout()
