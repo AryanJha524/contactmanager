@@ -58,22 +58,13 @@
 } 
 .mybutton 
 {
-    font-size: 20px;
-    border-radius: 50px;
+    font-size: 25px;
+    border-radius: 10px;
     width: 20%;
     margin-left: 40%;
     font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif; 
     outline: none; 
 } 
-
-.addContactButton 
-{
-    font-size: 20px;
-    border-radius: 50px;
-    width: 15%;
-    margin-left: 43%;
-    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
-}
 
 .mainbuttons:hover{
     background-color: #aea2ee4f;
@@ -131,7 +122,7 @@ input[type="text"],input[type="password"]{
     text-align: center;
     margin-left: 7%;
     margin-bottom: 2%;
-    font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Avantgarde', sans-serif;
     color: #7a5394;
 }
 
@@ -192,4 +183,9 @@ select{
     margin-bottom: 1%;
     font-family: 'Ubuntu', sans-serif;
     color: #95060a;
+} 
+
+#name 
+{
+    
 }

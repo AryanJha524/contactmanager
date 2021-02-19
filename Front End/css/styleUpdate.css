@@ -1,9 +1,9 @@
-body
+.background
 {
 
-  background-image: url('/images/c5d9e05f7c1055e32d67a34363cca041.jpg'); 
+  background-image: url('/images/bookshelf1.jpg'); 
   position: absolute;
- 
+
 
   height: 100%;
   width: 100%;
@@ -16,15 +16,23 @@ body
 
 } 
 
+.blur 
+{
+   
+    backdrop-filter: blur(3px); 
+    height: 100%;
+    width: 100%;
+}
 
 #title
 {
     font-size: 70px;
     width: 100%;
-    margin: 2% 5%;
+    margin: 2% 5%; 
+    margin-left: 30%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
-    color: #707070;
+    color: #291c1c;
 } 
 
 
@@ -40,22 +48,15 @@ body
     ;
 }
 
-.mainButtons
+.buttons
 {
     font-size: 25px;
-    border-radius: 15px;
-    width: 60%;
-    margin-left: 20%;
+    border-radius: 50px;
+    width: 30%;
+    margin-left: 35%;
     font-family: 'Century Gothic', sans-serif;
 } 
-.mybutton 
-{
-    font-size: 20px;
-    border-radius: 50px;
-    width: 20%;
-    margin-left: 40%;
-    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
-} 
+
 
 .addContactButton 
 {
@@ -66,8 +67,8 @@ body
     font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif;
 }
 
-.mainbuttons:hover{
-    background-color: #aea2ee4f;
+.buttons:hover{
+    background-color: #3a283fe3;
     color: #FFFFFF;
     opacity: 50%;
 }
@@ -92,6 +93,10 @@ body
     font-size: 25px;
 } 
 
+#phoneNumber 
+{
+    font-size: 25px;
+}
 
 #loginPassword
 {
@@ -109,8 +114,8 @@ body
 input[type="text"],input[type="password"]{
     border-radius: 25px;
     text-align: center;
-    width: 80%;
-    margin-left: 10%;
+    width: 60%;
+    margin-left: 20%;
     margin-bottom: 2%;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -122,8 +127,8 @@ input[type="text"],input[type="password"]{
     text-align: center;
     margin-left: 7%;
     margin-bottom: 2%;
-    font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
-    color: #7a5394;
+    font-family: 'Avantgarde', sans-serif;
+    color: #4b3658;
 }
 
 #loginResult{

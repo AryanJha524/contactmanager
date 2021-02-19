@@ -303,8 +303,9 @@ function getFirstName()
 		{
 			firstName = parseInt( tokens[1].trim() );
 		}
-	}
-	return firstName;
+	} 
+
+	document,getElementById(firstName).innerHTML = gFirstName();
 }
 
 function doLogout()
@@ -394,12 +395,22 @@ function listContacts()
 
 		document.getElementsByTagName("p")[0].innerHTML = contactList;
 
+		xhr.send(jsonPayload); 
 
-		xhr.send(jsonPayload);
-	}
+	} 
+
+	
 	catch(err)
 	{
 		console.log(err.message);
-	}
+	} 
+
+	// Creates a tables for each contact that is returned by search
+function addTable(contact, index)
+{
+   
+
+    return list;
+}
 
 }

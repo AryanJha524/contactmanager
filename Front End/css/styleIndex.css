@@ -19,11 +19,12 @@ body
 
 #title
 {
-    font-size: 70px;
+    font-size: 100px;
     width: 100%;
-    margin: 2% 5%;
+    margin: 2% 5%; 
+    margin-left: 39%;
     text-align: center;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Arial', sans-serif;
     color: #f7f3f3;
 } 
 
@@ -51,12 +52,12 @@ body
 #inner 
 {
     display: inline-block;
-    font-size: 27px; 
+    font-size: 40px; 
     text-align: center;
-    margin-left: 39%;
+    margin-left: 28%;
     margin-bottom: 2%;
     font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
-    color: #17251d;
+    color: #87a14a;
 }
 
 
@@ -77,7 +78,7 @@ body
     font-size: 27px;
     border-radius: 15px;
     width: 40%;
-    margin-left: 30%;
+    margin-left: 32%;
     font-family: 'Century Gothic', sans-serif; 
     outline: none;
 } 
@@ -103,7 +104,7 @@ body
 input[type="text"],input[type="password"]{
     border-radius: 25px;
     text-align: center;
-    width: 65%;
+    width: 75%;
     margin-left: 15%;
     margin-bottom: 2%;
     font-family: 'Ubuntu', sans-serif; 
@@ -115,20 +116,20 @@ input[type="text"],input[type="password"]{
     font-size: 35px;
     width: 90%;
     text-align: center;
-    margin-left: 7%;
+    margin-left: 9%;
     margin-bottom: 2%;
-    font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Avantgarde', sans-serif;
     color: #7a5394;
 }
 
 #new 
 {
     display: inline-block; 
-    font-size: 40px;
+    font-size: 37px;
     text-align: center; 
-    margin-left: 33%;
+    margin-left: 34%;
     margin-bottom: 2%;
-    font-family: 'Tahoma', 'Geneva', sans-serif;
+    font-family: 'Avantgarde', sans-serif;
     color: #7a5394;
 }
 
