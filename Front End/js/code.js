@@ -8,8 +8,6 @@ var lastName = "";
 function doLogin()
 {
 	userId = 0;
-	firstName = "";
-	lastName = "";
 
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
@@ -148,10 +146,9 @@ function createContact()
 	var lastName = document.getElementById("lastName").value;
 	var phone = document.getElementById("phoneNumber").value;
 	var email = document.getElementById("email").value;
-	var userID = getUserID();
-	document.getElementById("contactAddResult").innerHTML = " ";
-	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : ' + lastName +
-	'", "email" : ' + email + '", "phoneNumber" : ' + phone + '", "userID" : ' + userID + '}';
+	getUserID();
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName +
+	'", "email" : "' + email + '", "phoneNumber" : "' + phone + '", "userID" : ' + userId + '}';
 	var url = urlBase + '/CreateContact.' + extension;
 	console.log(jsonPayload);
 	var xhr = new XMLHttpRequest();
@@ -159,18 +156,13 @@ function createContact()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been added!";
-			}
-		};
+
+		document.getElementById("registration").innerHTML = "Contact has been added!";
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("contactAddResult").innerHTML = err.message;
+		document.getElementById("registration").innerHTML = err.message;
 	}
 
 }
@@ -181,11 +173,10 @@ function updateContact()
 	var lastName = document.getElementById("lastName").value;
 	var phone = document.getElementById("phoneNumber").value;
 	var email = document.getElementById("email").value;
-	var userID = getUserID();
 	document.getElementById("contactAddResult").innerHTML = " ";
 
 	var jsonPayload = '{"newFirstName" : "' + firstName + '", "newLastName" : '
-	+ lastName +'", "newEmail" : "' + email + '", "newPhoneNumber" : "' + phone +'", "id" : ' + id +', "userID" : ' + userID + '}';
+	+ lastName +'", "newEmail" : "' + email + '", "newPhoneNumber" : "' + phone +'", "id" : ' + id +', "userID" : ' + userId + '}';
 	var url = urlBase + '/UpdateContact.' + extension;
 	console.log(jsonPayload);
 	var xhr = new XMLHttpRequest();
@@ -216,10 +207,9 @@ function updateContact()
 function deleteContact()
 {
 	var id = 0;
-	var userID = getUserID();
 	document.getElementById("contactAddResult").innerHTML = " ";
 
-	var jsonPayload = '{"id" : ' + id + ', "userID" : ' + userID + '}';
+	var jsonPayload = '{"id" : ' + id + ', "userID" : ' + userId + '}';
 	var url = urlBase + '/DeleteContact.' + extension;
 	console.log(jsonPayload);
 	var xhr = new XMLHttpRequest();
@@ -289,17 +279,15 @@ function getUserID()
 {
 	var data = document.cookie;
 	var splits = data.split(",");
-	var userID = 0;
 	for(var i = 0; i < splits.length; i++)
 	{
 		var thisOne = splits[i].trim();
 		var tokens = thisOne.split("=");
 		if( tokens[0] == "userId" )
 		{
-			userID = parseInt( tokens[1].trim() );
+			userId = parseInt( tokens[1].trim() );
 		}
 	}
-	return userID;
 }
 
 function getFirstName()
@@ -332,12 +320,12 @@ function doLogout()
 
 function searchContact()
 {
-	var srch = document.getElementById("searchText").value;
-	document.getElementById("contactSearchResult").innerHTML = " ";
+	var srch = document.getElementById("firstName").value;
+	// document.getElementById("searchResult").innerHTML = "Contacts will show here!";
 
 	var contactList = "";
-
-	var jsonPayload = '{"firstName" : "' + srch + '}';
+	getUserID();
+	var jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
 	var url = urlBase + '/SearchContacts.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -345,30 +333,27 @@ function searchContact()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function()
+		xhr.send(jsonPayload);
+		console.log(xhr.responseText);
+		var jsonObject = JSON.parse( xhr.responseText );
+		console.log("A");
+		for( var i=0; i<jsonObject.results.length; i++ )
 		{
-			if (this.readyState == 4 && this.status == 200)
+			contactList += jsonObject.results[i];
+			if( i < jsonObject.results.length - 1 )
 			{
-				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
-				var jsonObject = JSON.parse( xhr.responseText );
-
-				for( var i=0; i<jsonObject.results.length; i++ )
-				{
-					contactList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						contactList += "<br />\r\n";
-					}
-				}
-
-				document.getElementsByTagName("p")[0].innerHTML = contactList;
+				contactList += "<br />\r\n";
 			}
-		};
+		}
+
+		document.getElementsByTagName("p")[0].innerHTML = contactList;
+
+
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("contactSearchResult").innerHTML = err.message;
+		console.log(err.message);
 	}
 
 }
