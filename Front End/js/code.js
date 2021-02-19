@@ -304,8 +304,8 @@ function getFirstName()
 			firstName = parseInt( tokens[1].trim() );
 		}
 	} 
-
-	document,getElementById(firstName).innerHTML = gFirstName();
+	
+	return firstName;
 }
 
 function doLogout()
