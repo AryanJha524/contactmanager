@@ -343,7 +343,10 @@ function searchContact()
 			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
 			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
 			contactList += contact;
-			console.log(jsonObject.results[i].firstName);
+			console.log(jsonObject.results[i].firstName); 
+			console.log(jsonObject.results[i].lastName); 
+			console.log(jsonObject.results[i].phoneNumber); 
+			console.log(jsonObject.results[i].email);
 			if( i < jsonObject.results.length - 1 )
 			{
 				contactList += "<br />\r\n";
@@ -386,11 +389,12 @@ function listContacts()
 			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
 			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
 			contactList += contact;
-			console.log(jsonObject.results[i].firstName);
+			console.log(jsonObject.results[i].firstName); 
+		
 			if( i < jsonObject.results.length - 1 )
 			{
 				contactList += "<br />\r\n";
-			}
+			} 
 		}
 
 		document.getElementsByTagName("p")[0].innerHTML = contactList;
@@ -405,12 +409,6 @@ function listContacts()
 		console.log(err.message);
 	} 
 
-	// Creates a tables for each contact that is returned by search
-function addTable(contact, index)
-{
-   
 
-    return list;
-}
 
 }
