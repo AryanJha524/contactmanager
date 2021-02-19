@@ -167,30 +167,23 @@ function createContact()
 
 }
 
-function updateContact()
+function updateContact(id)
 {
 	var firstName = document.getElementById("firstName").value;
 	var lastName = document.getElementById("lastName").value;
 	var phone = document.getElementById("phoneNumber").value;
 	var email = document.getElementById("email").value;
-	document.getElementById("contactAddResult").innerHTML = " ";
 
 	var jsonPayload = '{"newFirstName" : "' + firstName + '", "newLastName" : '
-	+ lastName +'", "newEmail" : "' + email + '", "newPhoneNumber" : "' + phone +'", "id" : ' + id +', "userID" : ' + userId + '}';
+	+ lastName +'", "newEmail" : "' + email + '", "newPhoneNumber" : "' + phone +'", "id" : ' + id +', "userId" : ' + userId + '}';
 	var url = urlBase + '/UpdateContact.' + extension;
 	console.log(jsonPayload);
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been updated!";
-			}
-		};
+		document.getElementById("contactAddResult").innerHTML = "Contact has been updated!";
 		xhr.send(jsonPayload);
 	}
 	catch(err)
@@ -204,26 +197,19 @@ function updateContact()
 
 // Something to get that contact
 // Put a button next to contact
-function deleteContact()
+function deleteContact(id)
 {
-	var id = 0;
 	document.getElementById("contactAddResult").innerHTML = " ";
 
-	var jsonPayload = '{"id" : ' + id + ', "userID" : ' + userId + '}';
+	var jsonPayload = '{"id" : ' + id + ', "userId" : ' + userId + '}';
 	var url = urlBase + '/DeleteContact.' + extension;
 	console.log(jsonPayload);
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				document.getElementById("contactDeleteResult").innerHTML = "Contact has been Deleted!";
-			}
-		};
+		document.getElementById("contactDeleteResult").innerHTML = "Contact has been Deleted!";
 		xhr.send(jsonPayload);
 	}
 	catch(err)
@@ -303,8 +289,8 @@ function getFirstName()
 		{
 			firstName = parseInt( tokens[1].trim() );
 		}
-	} 
-	
+	}
+
 	return firstName;
 }
 
@@ -343,9 +329,9 @@ function searchContact()
 			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
 			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
 			contactList += contact;
-			console.log(jsonObject.results[i].firstName); 
-			console.log(jsonObject.results[i].lastName); 
-			console.log(jsonObject.results[i].phoneNumber); 
+			console.log(jsonObject.results[i].firstName);
+			console.log(jsonObject.results[i].lastName);
+			console.log(jsonObject.results[i].phoneNumber);
 			console.log(jsonObject.results[i].email);
 			if( i < jsonObject.results.length - 1 )
 			{
@@ -389,25 +375,25 @@ function listContacts()
 			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
 			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
 			contactList += contact;
-			console.log(jsonObject.results[i].firstName); 
-		
+			console.log(jsonObject.results[i].firstName);
+
 			if( i < jsonObject.results.length - 1 )
 			{
 				contactList += "<br />\r\n";
-			} 
+			}
 		}
 
 		document.getElementsByTagName("p")[0].innerHTML = contactList;
 
-		xhr.send(jsonPayload); 
+		xhr.send(jsonPayload);
 
-	} 
+	}
 
-	
+
 	catch(err)
 	{
 		console.log(err.message);
-	} 
+	}
 
 
 
