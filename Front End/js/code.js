@@ -339,7 +339,53 @@ function searchContact()
 		console.log("A");
 		for( var i=0; i<jsonObject.results.length; i++ )
 		{
-			contactList += jsonObject.results[i];
+			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
+			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
+			contactList += contact;
+			console.log(jsonObject.results[i].firstName);
+			if( i < jsonObject.results.length - 1 )
+			{
+				contactList += "<br />\r\n";
+			}
+		}
+
+		document.getElementsByTagName("p")[0].innerHTML = contactList;
+
+
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		console.log(err.message);
+	}
+
+}
+
+function listContacts()
+{
+	var srch = "";
+	// document.getElementById("searchResult").innerHTML = "Contacts will show here!";
+
+	var contactList = "";
+	getUserID();
+	var jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
+	var url = urlBase + '/SearchContacts.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(jsonPayload);
+		console.log(jsonPayload);
+		var jsonObject = JSON.parse( xhr.responseText );
+		console.log("A");
+		for( var i=0; i<jsonObject.results.length; i++ )
+		{
+			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
+			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
+			contactList += contact;
+			console.log(jsonObject.results[i].firstName);
 			if( i < jsonObject.results.length - 1 )
 			{
 				contactList += "<br />\r\n";
