@@ -356,7 +356,7 @@ function listContacts()
 	var srch = "";
 	// document.getElementById("searchResult").innerHTML = "Contacts will show here!";
 
-	var contactList = "";
+	var contactList = "<table>";
 	getUserID();
 	var jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
 	var url = urlBase + '/SearchContacts.' + extension;
@@ -369,12 +369,24 @@ function listContacts()
 		xhr.send(jsonPayload);
 		console.log(jsonPayload);
 		var jsonObject = JSON.parse( xhr.responseText );
-		console.log("A");
+		var tableHeaders = ["First Name", "Last Name", "Phone Number", "Email Address"];
+
+		// create headers for table
+		contactList += "<tr>";
+		for(var i = 0; i<tableHeaders.length; i++)
+			contactList +=  "<th>" + tableHeaders[i] + "</th>";
+		contactList += "</tr>";
+
+		// create rows for table
 		for( var i=0; i<jsonObject.results.length; i++ )
 		{
-			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
-			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
-			contactList += contact;
+			contactList += "<tr>";
+			contactList += "<td>" + jsonObject.results[i].firstName + "</td>";
+			contactList += "<td>" + jsonObject.results[i].lastName + "</td>";
+			contactList += "<td>" + jsonObject.results[i].phoneNumber + "</td>";
+			contactList += "<td>" + jsonObject.results[i].email + "</td>";
+			contactList += "<tr>";
+
 			console.log(jsonObject.results[i].firstName);
 
 			if( i < jsonObject.results.length - 1 )
@@ -382,6 +394,9 @@ function listContacts()
 				contactList += "<br />\r\n";
 			}
 		}
+
+		// end table
+		table += "</table>"
 
 		document.getElementsByTagName("p")[0].innerHTML = contactList;
 
