@@ -1,7 +1,7 @@
 .background
 {
 
-  background-image: url('/images/bookshelf.jpg'); 
+  background-image: url('../images/bookshelf.jpg'); 
   position: absolute;
 
 

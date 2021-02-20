@@ -1,6 +1,6 @@
 .background 
 {
-    background-image: url("/images/Address_book_1.jpg"); 
+    background-image: url('../images/Address_book_1.jpg'); 
     position: absolute; 
 
     height: 100%;
