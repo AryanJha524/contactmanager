@@ -371,8 +371,10 @@ function listContacts()
 	{
 		xhr.send(jsonPayload);
 		console.log(jsonPayload);
-		var tableHeaders = ["First Name", "Last Name", "Phone Number", "Email Address"];
 
+		var tableHeaders = ["First Name", "Last Name", "Phone Number", "Email Address"];
+        var jsonObject = JSON.parse( xhr.responseText );
+        
 		// create headers for table
 		contactList += "<tr>";
 		for(var i = 0; i<tableHeaders.length; i++)
@@ -391,8 +393,7 @@ function listContacts()
 		}
 
 		// end table
-		table += "</table>"
-
+		contactList += "</table>"
 		document.getElementsByTagName("table")[0].innerHTML = contactList;
 
 		xhr.send(jsonPayload);
