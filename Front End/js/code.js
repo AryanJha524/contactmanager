@@ -154,13 +154,6 @@ function createContact()
 	var phone = document.getElementById("phoneNumber").value;
 	var email = document.getElementById("email").value;
 
-	// input validation
-	if(login === "" || password === "")
-	{
-		document.getElementById("registration").innerHTML = "<br />" + "Invalid inputs!";
-		return;
-	}
-
 	getUserID();
 	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName +
 	'", "email" : "' + email + '", "phoneNumber" : "' + phone + '", "userID" : ' + userId + '}';
