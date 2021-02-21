@@ -89,7 +89,7 @@ function doRegister()
 		// debugging
 		console.log(jsonPayload);
 		console.log(xhr.responseText);
-		
+
 		var jsonObject = JSON.parse( xhr.responseText );
 		userId = jsonObject.id;
 
@@ -155,7 +155,7 @@ function createContact()
 	var email = document.getElementById("email").value;
 
 	// input validation
-	if(login === "" || password === "")
+	if(firstName === "" || lastName === "" || phone === "" || email === "")
 	{
 		document.getElementById("registration").innerHTML = "<br />" + "Invalid inputs!";
 		return;
@@ -218,7 +218,7 @@ function updateContact(id)
 function deleteContact(id)
 {
 	// document.getElementById("contactAddResult").innerHTML = " ";
-    
+
     getUserID();
 	var jsonPayload = '{"id" : ' + id + ', "userId" : ' + userId + '}';
 	var url = urlBase + '/DeleteContact.' + extension;
@@ -308,11 +308,12 @@ function getFirstName()
 		var tokens = thisOne.split("=");
 		if( tokens[0] == "firstName" )
 		{
-			firstName = parseInt( tokens[1].trim() );
+			firstName = tokens[1].trim();
 		}
 	}
-
-	console.log(getFirstName());
+	document.getElementById("inner-title").innerHTML = "Hello, " + firstName + "!";
+	console.log(firstName + "<----");
+	return firstName;
 }
 
 function doLogout()
@@ -359,7 +360,7 @@ function searchContact()
 			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
 			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
 			contactList += contact;
-			
+
 			// debug purposes
 			console.log(jsonObject.results[i].firstName);
 			console.log(jsonObject.results[i].lastName);
@@ -401,7 +402,7 @@ function listContacts()
 
 		var tableHeaders = ["First Name", "Last Name", "Phone Number", "Email Address", " ", " "];
         var jsonObject = JSON.parse( xhr.responseText );
-        
+
 		// create headers for table
 		contactList += "<tr>";
 		for(var i = 0; i<tableHeaders.length; i++)
@@ -416,8 +417,8 @@ function listContacts()
 			contactList += "<td>" + jsonObject.results[i].firstName + "</td>"  ;
 			contactList += "<td>" + jsonObject.results[i].lastName + "</td>";
 			contactList += "<td>" + jsonObject.results[i].phoneNumber + "</td>";
-			contactList += "<td>" + jsonObject.results[i].email + "</td>";  
-			var transfer = 'http://s21cop4331group5.tech/update.html?id=' + id; 
+			contactList += "<td>" + jsonObject.results[i].email + "</td>";
+			var transfer = 'http://s21cop4331group5.tech/update.html?id=' + id;
 			contactList += '<td><button type="button" id="searchContactButton" class="addContactButton" onclick="location.href=\'' + transfer + '\'">Edit</button></td>';
             contactList += '<td><button type="button" id="delete" onclick= "deleteContact(' + id + ');">Delete</button></td>';
 			contactList += "</tr>";
@@ -425,8 +426,8 @@ function listContacts()
 
 		// end table
 		contactList += "</table>";
-		document.getElementsByTagName("table")[0].innerHTML = contactList; 
-		
+		document.getElementsByTagName("table")[0].innerHTML = contactList;
+
 
 		xhr.send(jsonPayload);
 
@@ -454,5 +455,3 @@ function phoneNumberValidation(phoneNumber) {
 
 	return true;
 }
-
-
