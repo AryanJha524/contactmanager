@@ -185,19 +185,45 @@ select{
     color: #95060a;
 } 
 
-#contacList{
-    display: inline-block;
+#contacList 
+{
     font-size: 0.8em;
     width: 90%;
     text-align: center;
-    margin-left: 5%;
+    margin-left: 20%;
     margin-top: 2%;
     margin-bottom: 1%;
     font-family: 'Ubuntu', sans-serif;
     color: #472f47;
 }  
 
-table, th, td {
+table {
   border: 1px solid black;
-  border-collapse: collapse;
+  border-collapse: collapse;  
+  text-align: center;  
+  vertical-align:bottom; 
+  margin-left: 30%; 
+} 
+
+th 
+{
+  border: 1px solid black; 
+  border-collapse: collapse
+}  
+
+th, td 
+{
+  border-bottom: 1px solid;  
+  padding: 15px; 
 }
+
+tr 
+{
+   border: 1px solid #000000; 
+   border-collapse: collapse  
+} 
+
+tr:nth-child(even) 
+{
+  background-color: #60486f91
+} 
