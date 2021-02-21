@@ -22,7 +22,7 @@ body
     font-size: 100px;
     width: 100%;
     margin: 2% 5%; 
-    margin-left: 39%;
+    margin-left: 37%;
     text-align: center;
     font-family: 'Arial', sans-serif;
     color: #f7f3f3;
@@ -33,7 +33,7 @@ body
     font-size: 40px;
     width: 30%; 
     height: 50%;
-    margin-left: 37%;
+    margin-left: 34.5%;
     padding: 25px; 
     border-radius: 50px;
     background-color: #464346; 
@@ -127,7 +127,7 @@ input[type="text"],input[type="password"]{
     display: inline-block; 
     font-size: 37px;
     text-align: center; 
-    margin-left: 34%;
+    margin-left: 35.5%;
     margin-bottom: 2%;
     font-family: 'Avantgarde', sans-serif;
     color: #7a5394;

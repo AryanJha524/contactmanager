@@ -13,12 +13,16 @@
 <span id="title">Welcome To Contactular</span>
 <span id="loginName"></span>
 <br></br>
-<span id="inner-title">Hello,>
+<span id="inner-title">Hello>
 
-<div id="accessUIDiv">
-	<button type="button" id="listContactButton" class="mainButtons" onclick="listContacts(); this.onclick = null"> View Contacts </button> <input type = "button" id="logoutButton" class="myButton" onclick="location.href='http://s21cop4331group5.tech/main.html'" value="Back">
-	
-	<table id="contactList"></table> 
+<div id="accessUIDiv"> 
+	<script>
+		window.onload = function() {
+		  listContacts();
+		};
+	  </script>
+	<table id="contactList"></table>
+    <input type = "button" id="logoutButton" class="myButton" onclick="location.href='http://s21cop4331group5.tech/main.html'" value="Back"> 
 </div>
 </div>
 

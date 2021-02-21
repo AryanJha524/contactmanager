@@ -60,6 +60,11 @@ function doRegister()
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
 
+	if(login === "" || password === "")
+	{
+		document.getElementById("registration").innerHTML = "<br />" + "Invalid inputs!";
+		return;
+	}
 	// var hash = md5( password );
 
 	document.getElementById("registration").innerHTML = " ";
@@ -80,19 +85,21 @@ function doRegister()
 			return;
 		}
 		xhr.send(jsonPayload);
+
+		// debugging
 		console.log(jsonPayload);
 		console.log(xhr.responseText);
-				var jsonObject = JSON.parse( xhr.responseText );
+		
+		var jsonObject = JSON.parse( xhr.responseText );
+		userId = jsonObject.id;
 
-				userId = jsonObject.id;
 
+		firstName = jsonObject.firstName;
+		lastName = jsonObject.lastName;
 
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
-
-				saveCookie();
-				document.getElementById("registration").innerHTML = "\nAccount created.";
-				window.location.href = "http://s21cop4331group5.tech/";
+		saveCookie();
+		document.getElementById("registration").innerHTML = "\nAccount created.";
+		window.location.href = "http://s21cop4331group5.tech/";
 
 	}
 	catch(err)
@@ -146,6 +153,14 @@ function createContact()
 	var lastName = document.getElementById("lastName").value;
 	var phone = document.getElementById("phoneNumber").value;
 	var email = document.getElementById("email").value;
+
+	// input validation
+	if(login === "" || password === "")
+	{
+		document.getElementById("registration").innerHTML = "<br />" + "Invalid inputs!";
+		return;
+	}
+
 	getUserID();
 	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName +
 	'", "email" : "' + email + '", "phoneNumber" : "' + phone + '", "userID" : ' + userId + '}';
@@ -174,21 +189,24 @@ function updateContact(id)
 	var phone = document.getElementById("phoneNumber").value;
 	var email = document.getElementById("email").value;
 
-	var jsonPayload = '{"newFirstName" : "' + firstName + '", "newLastName" : '
+	getUserID();
+	var jsonPayload = '{"newFirstName" : "' + firstName + '", "newLastName" : "'
 	+ lastName +'", "newEmail" : "' + email + '", "newPhoneNumber" : "' + phone +'", "id" : ' + id +', "userId" : ' + userId + '}';
 	var url = urlBase + '/UpdateContact.' + extension;
 	console.log(jsonPayload);
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		document.getElementById("contactAddResult").innerHTML = "Contact has been updated!";
+		console.log("Contact has been updated!");
 		xhr.send(jsonPayload);
+		console.log(xhr.responseText);
 	}
 	catch(err)
 	{
-		document.getElementById("contactAddResult").innerHTML = err.message;
+		console.log(err.message);
 	}
 
 }
@@ -199,22 +217,25 @@ function updateContact(id)
 // Put a button next to contact
 function deleteContact(id)
 {
-	document.getElementById("contactAddResult").innerHTML = " ";
-
+	// document.getElementById("contactAddResult").innerHTML = " ";
+    
+    getUserID();
 	var jsonPayload = '{"id" : ' + id + ', "userId" : ' + userId + '}';
 	var url = urlBase + '/DeleteContact.' + extension;
 	console.log(jsonPayload);
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		document.getElementById("contactDeleteResult").innerHTML = "Contact has been Deleted!";
+		console.log("Contact has been Deleted!");
 		xhr.send(jsonPayload);
+		location.reload();
 	}
 	catch(err)
 	{
-		document.getElementById("contactDeleteResult").innerHTML = err.message;
+		console.log(err.message);
 	}
 
 }
@@ -291,7 +312,7 @@ function getFirstName()
 		}
 	}
 
-	return firstName;
+	console.log(getFirstName());
 }
 
 function doLogout()
@@ -320,10 +341,19 @@ function searchContact()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.send(jsonPayload);
-		console.log(xhr.responseText);
+		// make sure we get valid search results
+		try
+        {
+        	xhr.send(jsonPayload);
+        }
+        catch
+        {
+        	console.log(xhr.responseText);
+        	return;
+        }
+
+		// print out search results
 		var jsonObject = JSON.parse( xhr.responseText );
-		console.log("A");
 		for( var i=0; i<jsonObject.results.length; i++ )
 		{
 			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
@@ -343,9 +373,6 @@ function searchContact()
 		}
 
 		document.getElementsByTagName("p")[0].innerHTML = contactList;
-
-
-		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
@@ -372,7 +399,7 @@ function listContacts()
 		xhr.send(jsonPayload);
 		console.log(jsonPayload);
 
-		var tableHeaders = ["First Name", "Last Name", "Phone Number", "Email Address"];
+		var tableHeaders = ["First Name", "Last Name", "Phone Number", "Email Address", " ", " "];
         var jsonObject = JSON.parse( xhr.responseText );
         
 		// create headers for table
@@ -384,17 +411,22 @@ function listContacts()
 		// create rows for table
 		for( var i=0; i<jsonObject.results.length; i++ )
 		{
+			var id = jsonObject.results[i].ID;
 			contactList += "<tr>";
-			contactList += "<td>" + jsonObject.results[i].firstName + "</td>";
+			contactList += "<td>" + jsonObject.results[i].firstName + "</td>"  ;
 			contactList += "<td>" + jsonObject.results[i].lastName + "</td>";
 			contactList += "<td>" + jsonObject.results[i].phoneNumber + "</td>";
-			contactList += "<td>" + jsonObject.results[i].email + "</td>";
+			contactList += "<td>" + jsonObject.results[i].email + "</td>";  
+			var transfer = 'http://s21cop4331group5.tech/update.html?id=' + id; 
+			contactList += '<td><button type="button" id="searchContactButton" class="addContactButton" onclick="location.href=\'' + transfer + '\'">Edit</button></td>';
+            contactList += '<td><button type="button" id="delete" onclick= "deleteContact(' + id + ');">Delete</button></td>';
 			contactList += "</tr>";
 		}
 
 		// end table
-		contactList += "</table>"
-		document.getElementsByTagName("table")[0].innerHTML = contactList;
+		contactList += "</table>";
+		document.getElementsByTagName("table")[0].innerHTML = contactList; 
+		
 
 		xhr.send(jsonPayload);
 
@@ -405,7 +437,22 @@ function listContacts()
 	{
 		console.log(err.message);
 	}
-
-
-
 }
+
+function emailValidation(email) {
+	if(!email.includes('@'))
+		return false;
+
+	return true;
+}
+
+function phoneNumberValidation(phoneNumber) {
+	var regex = /[A-Za-z]/g;
+
+	if(regex.test(phoneNumber))
+		return false;
+
+	return true;
+}
+
+

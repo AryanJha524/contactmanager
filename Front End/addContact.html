@@ -23,9 +23,18 @@
 	<input type="text" id="firstName" placeholder="First Name"/><br />
 	<input type="text" id="lastName" placeholder="Last Name"/><br />
 	<input type="text" id="email" placeholder="Email Address" /><br />
-	<input type="text" id="phoneNumber" placeholder="Phone Number"/><br />
+	<input type="text" id="phoneNumber" placeholder="Phone Number"/><br /> 
 
-	<button type="button" id="loginButton" class="addContactButton" onclick="createContact();"> Add Contact </button>
+	<script> 
+	function update() 
+	{
+		createContact(); 
+		window.location.href = "http://s21cop4331group5.tech/main.html";
+	} 
+	</script>
+
+	<button type="button" id="loginButton" class="addContactButton" onclick="createContact();"> Add Contact </button> 
+	<input type="button" id="searchContactButton" class="addContactButton" onclick="location.href='http://s21cop4331group5.tech/main.html'" value='Back'>
 	<span id="registration"></span>
 </div>
 </div> 

@@ -1,0 +1,53 @@
+<html>	
+<head>
+	<title>Add Contact</title>
+	<script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styleAdd.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+	<!-- <script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function()
+	{
+		readCookie();
+	}, false);
+	</script> -->
+	
+</head>
+
+<div class ="background"> 
+	<div class="blur">
+<span id="title">Update Contact info</span>
+
+<div id="loginDiv">
+	<span id="inner-title">Please enter new contact information</span>
+	<input type="text" id="firstName" placeholder="First Name"/><br />
+	<input type="text" id="lastName" placeholder="Last Name"/><br />
+	<input type="text" id="email" placeholder="Email Address" /><br />
+	<input type="text" id="phoneNumber" placeholder="Phone Number"/><br />
+
+    <script>
+        var url = window.location.href;
+        var id = "";
+
+        for(var i = url.length - 1; i >= 0; i--)
+        {
+            if(url[i] == "=")
+                break;
+                
+            id += url[i];
+        }
+
+		var true_id = id.split("").reverse().join("");
+        function update() {
+		  updateContact(parseInt(true_id));
+          window.location.href = "http://s21cop4331group5.tech/viewContacts.html";
+		};
+    </script>
+
+	<button type="button" id="loginButton" class="addContactButton" onclick="update();"> Update Contact </button> 
+	<input type="button" id="searchContactButton" class="addContactButton" onclick="location.href='http://s21cop4331group5.tech/viewContacts.html'" value='Back'>
+	<span id="registration"></span>
+</div>
+</div> 
+</div>
+</html>
