@@ -13,9 +13,15 @@
 <span id="title">Welcome Back!</span>
 <span id="loginName"></span>
 <br></br>
-<span id="inner-title"> </span>
+<span id="inner-title">  
+	<script>
+		window.onload = function()  
+		{
+		getFirstName(); 
+		}
+	</script>
+</span>
 <div id="accessUIDiv">
-
     <input type="button" id="searchContactButton" class="mainButtons" onclick="location.href='http://s21cop4331group5.tech/viewContacts.html'" value='View Contacts'>
 	<p id="contactList">
 	</p>

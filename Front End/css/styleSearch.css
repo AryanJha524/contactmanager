@@ -1,7 +1,7 @@
 .background
 {
 
-  background-image: url('../images/bookshelf.jpg'); 
+  background-image: url('../images/succulent.jpg'); 
   position: absolute;
 
 
@@ -30,7 +30,7 @@
     width: 100%;
     margin: 2% 5%;
     text-align: center; 
-    margin-left: 27%;
+    margin-left: 25%;
     font-family: 'Ubuntu', sans-serif;
     color: #64806e;
 } 
@@ -40,7 +40,7 @@
 {
     font-size: 30px;
     width: 60%;
-    margin-left: 20%;
+    margin-left: 18%;
     padding: 25px; 
     border-radius: 50px;
     background-color: #8a888a; 
@@ -54,11 +54,11 @@
     border-radius: 50px;
     width: 20%;
     margin-left: 40%;
-    font-family: 'Corbed', Georgia, 'Times New Roman', Times, serif; 
+    font-family: 'Century Gothic', sans-serif; 
     outline: none; 
 }
 
-.mainbuttons:hover{
+.mybutton:hover{
     background-color: #aea2ee4f;
     color: #FFFFFF;
     opacity: 50%;
@@ -83,8 +83,8 @@
 input[type="text"],input[type="password"]{
     border-radius: 25px;
     text-align: center;
-    width: 80%;
-    margin-left: 10%;
+    width: 60%;
+    margin-left: 20%;
     margin-bottom: 2%;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -130,10 +130,6 @@ input[type="text"],input[type="password"]{
     text-align: center;
 }
 
-#logoutButton{
-    width: 20%;
-    margin-left: 40%;
-}
 
 select{
     width: 30%;
@@ -164,7 +160,7 @@ table {
   border-collapse: collapse;  
   text-align: center;  
   vertical-align:bottom; 
-  margin-right 30%; 
+  margin-left: 30%; 
 } 
 
 th 

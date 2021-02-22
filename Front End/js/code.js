@@ -307,6 +307,26 @@ function getFirstName()
 	document.getElementById("inner-title").innerHTML = "Hello, " + firstName + "!";
 	console.log(firstName + "<----");
 	return firstName;
+} 
+
+function getNameFirst() 
+{
+	var data = document.cookie;
+	var splits = data.split(",");
+	var firstName = "";
+	for(var i = 0; i < splits.length; i++)
+	{
+		var thisOne = splits[i].trim();
+		var tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = tokens[1].trim();
+		}
+	}
+	document.getElementById("inner-title").innerHTML = firstName + "'s contact list";
+	console.log(firstName + "<----");
+	return firstName;
+
 }
 
 function doLogout()

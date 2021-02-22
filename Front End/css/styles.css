@@ -1,7 +1,7 @@
 .background
 {
 
-  background-image: url('../images/desk.jpg'); 
+  background-image: url('../images/plant.jfif'); 
   position: absolute;
  
 
@@ -31,8 +31,8 @@
     margin: 2% 5%; 
     margin-left: 36%;
     text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-    color: #583b70;
+    font-family: 'Arial', sans-serif;
+    color: #18181896;
 } 
 
 
@@ -117,13 +117,14 @@ input[type="text"],input[type="password"]{
 
 #inner-title{
     display: inline-block;
-    font-size: 35px;
+    font-size: 45px;
     width: 90%;
     text-align: center;
-    margin-left: 7%;
+    margin-left: 5%;
     margin-bottom: 2%;
     font-family: 'Avantgarde', sans-serif;
-    color: #7a5394;
+    color: #77864b; 
+    font-weight: 500; 
 }
 
 #loginResult{
@@ -185,7 +186,3 @@ select{
     color: #95060a;
 } 
 
-#name 
-{
-
-}

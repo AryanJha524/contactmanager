@@ -1,6 +1,6 @@
 .background 
 {
-    background-image: url('../images/Address_book_1.jpg'); 
+    background-image: url('../images/regist.jpeg'); 
     position: absolute; 
 
     height: 100%;
@@ -28,11 +28,11 @@
     font-size: 80px;
     width: 100%;
     margin: 0% 0%;
-    margin-top: 0%; 
-    margin-left: 40%;
+    margin-top: 0%;  
+    margin-left: 38%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
-    color: #2b292a; 
+    color: #293829d0; 
     overflow-y: hidden;
 } 
 
@@ -40,7 +40,7 @@
 {
     font-size: 30px;
     width: 50%;
-    margin-left: 27%; 
+    margin-left: 23.5%; 
     margin-top: 3%;
     padding: 25px; 
     border-radius: 50px;
@@ -115,7 +115,7 @@ input[type="text"],input[type="password"]{
     margin-left: 7%;
     margin-bottom: 2%;
     font-family: 'Avantgarde', sans-serif;
-    color: #5f3a77;
+    color: #463a50;
 }
 
 #loginResult{
