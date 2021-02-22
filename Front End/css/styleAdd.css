@@ -61,8 +61,8 @@
 {
     font-size: 20px;
     border-radius: 50px;
-    width: 20%;
-    margin-left: 41%;
+    width: 24%;
+    margin-left: 37%;
     font-family: 'Century Gothic', sans-serif; 
     outline: none;
 }
@@ -115,7 +115,7 @@ input[type="text"],input[type="password"]{
     margin-left: 7%;
     margin-bottom: 2%;
     font-family: 'Avantgarde', sans-serif;
-    color: #7a5394;
+    color: #6c4f80;
 }
 
 #loginResult{
@@ -175,4 +175,10 @@ select{
     margin-bottom: 1%;
     font-family: 'Ubuntu', sans-serif;
     color: #95060a;
+}
+ 
+#registration 
+{
+ font-family: 'Avantgarde', sans-serif; 
+ margin-left:26%; 
 }

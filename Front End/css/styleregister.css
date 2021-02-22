@@ -30,9 +30,9 @@
     width: 100%;
     margin: 2% 5%;
     text-align: center; 
-    margin-left: 29%;
+    margin-left: 25.5%;
     font-family: 'Arial', sans-serif;
-    color: #707070;
+    color: #737373;
     font-weight:500;
 } 
 
@@ -40,7 +40,7 @@
 {
     font-size: 30px;
     width: 50%;
-    margin-left: 27%;
+    margin-left: 23%;
     padding: 25px; 
     border-radius: 50px;  
     background-color: #8a888a; 
@@ -60,8 +60,8 @@
 {
     font-size: 25px;
     border-radius: 15px;
-    width: 40%;
-    margin-left: 30%;
+    width: 30%;
+    margin-left: 35%;
     font-family: 'Century Gothic', sans-serif; 
     outline: none;
   

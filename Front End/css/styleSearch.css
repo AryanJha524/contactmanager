@@ -53,7 +53,7 @@
     font-size: 20px;
     border-radius: 50px;
     width: 20%;
-    margin-left: 40%;
+    margin-left: 39%;
     font-family: 'Century Gothic', sans-serif; 
     outline: none; 
 }
@@ -94,10 +94,10 @@ input[type="text"],input[type="password"]{
     font-size: 35px;
     width: 90%;
     text-align: center;
-    margin-left: 7%;
+    margin-left: 5%;
     margin-bottom: 2%;
     font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
-    color: #366a3d;
+    color: #253e22;
 }
 
 #loginResult{

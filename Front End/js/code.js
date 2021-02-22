@@ -165,7 +165,7 @@ function createContact()
 	try
 	{
 
-		document.getElementById("registration").innerHTML = "Contact has been added!";
+		document.getElementById("registration").innerHTML = "Your contact has been added!";
 		xhr.send(jsonPayload);
 	}
 	catch(err)
@@ -193,7 +193,7 @@ function updateContact(id)
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		console.log("Contact has been updated!");
+		//document.getElementById("update").innerHTML = "Your contact has been updated!";
 		xhr.send(jsonPayload);
 		console.log(xhr.responseText);
 	}
@@ -222,7 +222,7 @@ function deleteContact(id)
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		console.log("Contact has been Deleted!");
+		//document.getElementById("delete").innerHTML = "Your contact has been deleted!";
 		xhr.send(jsonPayload);
 		location.reload();
 	}
@@ -308,26 +308,6 @@ function getFirstName()
 	console.log(firstName + "<----");
 	return firstName;
 } 
-
-function getNameFirst() 
-{
-	var data = document.cookie;
-	var splits = data.split(",");
-	var firstName = "";
-	for(var i = 0; i < splits.length; i++)
-	{
-		var thisOne = splits[i].trim();
-		var tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
-		{
-			firstName = tokens[1].trim();
-		}
-	}
-	document.getElementById("inner-title").innerHTML = firstName + "'s contact list";
-	console.log(firstName + "<----");
-	return firstName;
-
-}
 
 function doLogout()
 {

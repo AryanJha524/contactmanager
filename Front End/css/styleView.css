@@ -4,7 +4,6 @@
   background-image: url('../images/photo-1527176930608-09cb256ab504.jfif'); 
   position: absolute;
  
-
   height: 100%;
   width: 100%;
 
@@ -32,7 +31,7 @@
     margin-left: 36%;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    color: #869a84;
+    color: #4f504f;
 } 
 
 
@@ -169,21 +168,6 @@ select{
     font-family: 'Ubuntu', sans-serif;
 }
 
-#colorSearchResult{
-    display: none;
-}
-
-#colorAddResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
-} 
 
 #contacList 
 {
