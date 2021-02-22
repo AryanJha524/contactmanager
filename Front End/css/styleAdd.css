@@ -32,7 +32,7 @@
     margin-left: 38%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
-    color: #293829d0; 
+    color: #454645; 
     overflow-y: hidden;
 } 
 
@@ -115,7 +115,7 @@ input[type="text"],input[type="password"]{
     margin-left: 7%;
     margin-bottom: 2%;
     font-family: 'Avantgarde', sans-serif;
-    color: #463a50;
+    color: #7a5394;
 }
 
 #loginResult{

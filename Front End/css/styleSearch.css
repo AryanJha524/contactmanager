@@ -30,9 +30,9 @@
     width: 100%;
     margin: 2% 5%;
     text-align: center; 
-    margin-left: 25%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #64806e;
+    margin-left: 27%;
+    font-family: 'Arial', sans-serif;
+    color: #4f504f;
 } 
 
 
@@ -84,7 +84,7 @@ input[type="text"],input[type="password"]{
     border-radius: 25px;
     text-align: center;
     width: 60%;
-    margin-left: 20%;
+    margin-left: 21%;
     margin-bottom: 2%;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -97,7 +97,7 @@ input[type="text"],input[type="password"]{
     margin-left: 7%;
     margin-bottom: 2%;
     font-family: 'Corben', Georgia, 'Times New Roman', Times, serif;
-    color: #7a5394;
+    color: #366a3d;
 }
 
 #loginResult{
@@ -160,7 +160,9 @@ table {
   border-collapse: collapse;  
   text-align: center;  
   vertical-align:bottom; 
-  margin-left: 30%; 
+  margin-left: 19%;  
+  font-family: Georgia, Times, 'Times New Roman', serif; 
+  font-size: large; 
 } 
 
 th 
@@ -183,5 +185,5 @@ tr
 
 tr:nth-child(even) 
 {
-  background-color: #60486f91
+  background-color: #60486f63
 } 
