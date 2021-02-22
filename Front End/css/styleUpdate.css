@@ -1,7 +1,7 @@
 .background
 {
 
-  background-image: url('../images/bookshelf1.jpg'); 
+  background-image: url('../images/MinimalistDesk.jpg'); 
   position: absolute;
 
 
@@ -32,7 +32,7 @@
     margin-left: 34%;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    color: #291c1c;
+    color: #5a5656;
 } 
 
 
@@ -116,7 +116,7 @@ input[type="text"],input[type="password"]{
     margin-left: 7%;
     margin-bottom: 2%;
     font-family: 'Avantgarde', sans-serif;
-    color: #5f3a77;
+    color: #35523c;
 }
 
 #loginResult{

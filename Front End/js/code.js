@@ -345,28 +345,32 @@ function searchContact()
         	console.log(xhr.responseText);
         	return;
         }
+         
+		// print out search results 
+		var tableHeaders = ["First Name", "Last Name", "Phone Number", "Email Address"];
+		var jsonObject = JSON.parse( xhr.responseText ); 
 
-		// print out search results
-		var jsonObject = JSON.parse( xhr.responseText );
+		//create headers for table 
+		contactList += "<tr>"; 
+		for(var i = 0; i<tableHeaders.length; i++)
+		contactList +=  "<th>" + tableHeaders[i] + "</th>";
+		contactList += "</tr>";
+        
+		//Create rows for table
 		for( var i=0; i<jsonObject.results.length; i++ )
 		{
-			var contact = jsonObject.results[i].firstName + " " + jsonObject.results[i].lastName
-			+ " " + jsonObject.results[i].phoneNumber + " " + jsonObject.results[i].email + "\n";
-			contactList += contact;
-
-			// debug purposes
-			console.log(jsonObject.results[i].firstName);
-			console.log(jsonObject.results[i].lastName);
-			console.log(jsonObject.results[i].phoneNumber);
-			console.log(jsonObject.results[i].email);
-
-			if( i < jsonObject.results.length - 1 )
-			{
-				contactList += "<br />\r\n";
-			}
+			contactList += "<tr>";
+			contactList += "<td>" + jsonObject.results[i].firstName + "</td>"  ;
+			contactList += "<td>" + jsonObject.results[i].lastName + "</td>";
+			contactList += "<td>" + jsonObject.results[i].phoneNumber + "</td>";
+			contactList += "<td>" + jsonObject.results[i].email + "</td>";
+			contactList += "</tr>";
 		}
 
-		document.getElementsByTagName("p")[0].innerHTML = contactList;
+		//end of table 
+		contactList +="</table>" 
+		document.getElementsByTagName("table")[0].innerHTML = contactList; 
+		xhr.send(jsonPayload); 
 	}
 	catch(err)
 	{

@@ -39,8 +39,8 @@
 #accessUIDiv
 {
     font-size: 30px;
-    width: 90%;
-    margin-left: 0%;
+    width: 70%;
+    margin-left: 13%;
     padding: 25px; 
     border-radius: 50px;
     background-color: #8a888a; 
@@ -202,7 +202,7 @@ table {
   border-collapse: collapse;  
   text-align: center;  
   vertical-align:bottom; 
-  margin-left: 30%; 
+  margin-left: 10%; 
 } 
 
 th 
